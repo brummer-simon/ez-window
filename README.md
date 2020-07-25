@@ -6,7 +6,7 @@ Simple and small plugin for easy resizing and fast navigation between windows.
 
 Will create a new window, if it didn't exist earlier or move to an existing one.
 
-<!--![Imgur](https://i.imgur.com/SOBhnQm.gif?1)-->
+![Imgur](https://i.imgur.com/fTQkxD4.gif?1)
 
 Enters into Resize Mode.
 Use your keys `<hjkl>` to adjust the split size, `<q>` to quit.
