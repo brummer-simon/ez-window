@@ -1,10 +1,15 @@
 Easy Window
 ==========
-Simple and small plugin for fast navigation between windows.
+Simple and small plugin for easy resizing and fast navigation between windows.
 
 ![Imgur](https://i.imgur.com/SOBhnQm.gif?1)
 
 Will create a new window, if it didn't exist earlier or move to an existing one.
+
+<!--![Imgur](https://i.imgur.com/SOBhnQm.gif?1)-->
+
+Enters into Resize Mode.
+Use your keys `<hjkl>` to adjust the split size, `<q>` to quit.
 
 Installation
 ------------
@@ -25,3 +30,4 @@ Shortcuts
     <C-j>  : New window or Move Down.
     <C-k>  : New window or Move Up.
     <C-l>  : New window or Move Right.
+    <C-m>  : Enters into Resize Mode.
