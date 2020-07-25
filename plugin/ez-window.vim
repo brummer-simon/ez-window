@@ -11,15 +11,34 @@ let g:loaded_ezwindow = 1
 " Create/Change Splits
 function! s:EzWindow(key)
   let t:curwin = winnr()
-  exec "wincmd ".a:key
+  exec "wincmd " . a:key
   if (t:curwin == winnr())
     if (match(a:key,'[jk]'))
       wincmd v
     else
       wincmd s
     endif
-    exec "wincmd ".a:key | enew
+    exec "wincmd " . a:key | enew
   endif
+endfunction
+
+
+" Create New Terminal split (Only for NeoVim Users)
+function! s:NewTerminal()
+    if has('nvim')
+        if exists('t:terminal_buffer')
+            exe t:terminal_buffer . "wincmd c"
+            unlet t:terminal_buffer
+        else
+            botright split
+            let t:terminal_buffer = winnr()
+            resize 10
+            terminal
+            normal i
+        endif
+    else
+        echo "Sorry, you are not a 'NeoVim' user ;("
+    endif
 endfunction
 
 
@@ -54,7 +73,7 @@ function! s:getEdgeInfo()
 endfun
 
 
-function! s:canMoveCursorFromCurrentWindow(direct)
+function! s:canMoveCursorFromCurrentWindow(direct, mode)
   let map_direct = {'left':'h', 'down':'j', 'up':'k', 'right':'l'}
   if has_key(map_direct, a:direct)
     let direct = map_direct[a:direct]
@@ -117,6 +136,7 @@ com! EzWindowGoDown call s:EzWindow('j')
 com! EzWindowGoUp call s:EzWindow('k')
 com! EzWindowGoRight call s:EzWindow('l')
 com! EzWindowStartResize call s:ResizeMode(s:ResizeCommands())
+com! EzWindowNewTerminal call s:NewTerminal()
 
 
 " Mapping
@@ -125,3 +145,4 @@ nmap <silent> <C-j> :EzWindowGoDown<CR>
 nmap <silent> <C-k> :EzWindowGoUp<CR>
 nmap <silent> <C-l> :EzWindowGoRight<CR>
 nmap <silent> <C-m> :EzWindowStartResize<CR>
+nmap <silent> <C-t> :EzWindowNewTerminal<CR>
