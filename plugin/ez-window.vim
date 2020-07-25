@@ -73,7 +73,7 @@ function! s:getEdgeInfo()
 endfun
 
 
-function! s:canMoveCursorFromCurrentWindow(direct, mode)
+function! s:canMoveCursorFromCurrentWindow(direct)
   let map_direct = {'left':'h', 'down':'j', 'up':'k', 'right':'l'}
   if has_key(map_direct, a:direct)
     let direct = map_direct[a:direct]
