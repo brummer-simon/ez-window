@@ -43,7 +43,7 @@ Installation
 * [Vim-Plug](https://github.com/junegunn/vim-plug)
   * `Plug 'AnotherProksY/ez-window'`
 
-Shortcuts
+Default Mappings
 ---------
 
     <C-h>  : New window or Move Left.
@@ -52,3 +52,14 @@ Shortcuts
     <C-l>  : New window or Move Right.
     <C-m>  : Enters into Resize Mode.
     <C-t>  : Open terminal split.
+
+Customize Mappings
+---------
+
+```vim
+" Change default 'Window Resize' mode mapping:
+let g:resize_start_key = '<C-r>'  " or any key you want
+
+" Change 'Open Terminal' mapping:
+let g:ez_terminal_key = '<C-o>'   " or any key you want
+```
