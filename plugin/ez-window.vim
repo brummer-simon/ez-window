@@ -2,10 +2,11 @@
 " Maintainer:	AnotherProksY <k.fazilov@icloud.com>
 " Repository: https://github.com/AnotherProksY/ez-window
 
-if exists('g:loaded_ezwindow') || &cp
+
+if exists('g:loaded_ez_window') || &cp
   finish
 end
-let g:loaded_ezwindow = 1
+let g:loaded_ez_window = 1
 
 
 let s:save_cpo = &cpo
@@ -46,8 +47,9 @@ function! s:NewTerminal()
 endfunction
 
 
+" List of commands for 'Resize Mode'
 function! s:ResizeCommands()
-  let behavior = s:getResizeBehavior()
+  let behavior = s:GetResizeBehavior()
   let commands = {
         \  'left'   : ':vertical resize ' . behavior['left']  . '1',
         \  'right'  : ':vertical resize ' . behavior['right'] . '1',
@@ -58,26 +60,29 @@ function! s:ResizeCommands()
 endfun
 
 
-let s:codeList = {
-     \  'left'  :'104',
-     \  'down'  :'106',
-     \  'up'    :'107',
-     \  'right' :'108',
+" List of ASCII codes for each symbol
+let s:code_list = {
+     \  'left'   :'104',
+     \  'down'   :'106',
+     \  'up'     :'107',
+     \  'right'  :'108',
      \  'finish' :'113',
      \}
 
 
-function! s:getEdgeInfo()
+" Create mapping for allowed directions in current split
+function! s:GetEdgeInfo()
   let chk_direct = ['left', 'down', 'up', 'right']
   let result = {}
   for direct in chk_direct
-    exe 'let result["' . direct . '"] = ' . !s:canMoveCursorFromCurrentWindow(direct)
+    exe 'let result["' . direct . '"] = ' . !s:CanMoveCursorFromCurrentWindow(direct)
   endfor
   return result
 endfun
 
 
-function! s:canMoveCursorFromCurrentWindow(direct)
+" Get information about current split position
+function! s:CanMoveCursorFromCurrentWindow(direct)
   let map_direct = {'left':'h', 'down':'j', 'up':'k', 'right':'l'}
   if has_key(map_direct, a:direct)
     let direct = map_direct[a:direct]
@@ -92,9 +97,10 @@ function! s:canMoveCursorFromCurrentWindow(direct)
 endfun
 
 
-function! s:getResizeBehavior()
+" Create correct mapping for resize movement
+function! s:GetResizeBehavior()
   let signs = {'left':'-', 'down':'+', 'up':'-', 'right':'+'}
-  let ei = s:getEdgeInfo()
+  let ei = s:GetEdgeInfo()
   if !ei['left'] && ei['right']
     let signs['left'] = '+'
     let signs['right'] = '-'
@@ -116,15 +122,15 @@ function! s:ResizeMode(commands)
     while 1
         let l:c = getchar()
 
-        if c == s:codeList['left'] "h
+        if c == s:code_list['left'] "h
             exec l:commands['left']
-        elseif c == s:codeList['down'] "j
+        elseif c == s:code_list['down'] "j
             exec l:commands['down']
-        elseif c == s:codeList['up'] "k
+        elseif c == s:code_list['up'] "k
             exec l:commands['up']
-        elseif c == s:codeList['right'] "l
+        elseif c == s:code_list['right'] "l
             exec l:commands['right']
-        elseif c == s:codeList['finish'] "q
+        elseif c == s:code_list['finish'] "q
             redraw
             echo "Finished!"
             break
@@ -134,7 +140,7 @@ function! s:ResizeMode(commands)
 endfunction
 
 
-" Commands
+" List of Commands
 com! EzWindowGoLeft call s:EzWindow('h')
 com! EzWindowGoDown call s:EzWindow('j')
 com! EzWindowGoUp call s:EzWindow('k')
@@ -143,7 +149,7 @@ com! EzWindowStartResize call s:ResizeMode(s:ResizeCommands())
 com! EzWindowNewTerminal call s:NewTerminal()
 
 
-" Mapping
+" List of Mappings
 let s:default_start_key = '<C-m>'
 let s:default_ez_window_keys = {
             \ 'left'  : '<C-h>',
@@ -153,8 +159,10 @@ let s:default_ez_window_keys = {
             \}
 let s:default_ez_terminal_key = '<C-t>'
 
+
 let g:resize_start_key = get(g:, 'resize_start_key', s:default_start_key)
 let g:ez_terminal_key = get(g:, 'ez_terminal_key', s:default_ez_terminal_key)
+
 
 exe 'nnoremap <silent> '. g:resize_start_key .' :EzWindowStartResize<CR>'
 exe 'nnoremap <silent> '. s:default_ez_window_keys['left'] .' :EzWindowGoLeft<CR>'
