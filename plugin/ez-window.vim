@@ -8,6 +8,10 @@ end
 let g:loaded_ezwindow = 1
 
 
+let s:save_cpo = &cpo
+set cpo&vim
+
+
 " Create/Change Splits
 function! s:EzWindow(key)
   let t:curwin = winnr()
@@ -140,9 +144,32 @@ com! EzWindowNewTerminal call s:NewTerminal()
 
 
 " Mapping
-nmap <silent> <C-h> :EzWindowGoLeft<CR>
-nmap <silent> <C-j> :EzWindowGoDown<CR>
-nmap <silent> <C-k> :EzWindowGoUp<CR>
-nmap <silent> <C-l> :EzWindowGoRight<CR>
-nmap <silent> <C-m> :EzWindowStartResize<CR>
-nmap <silent> <C-t> :EzWindowNewTerminal<CR>
+let s:default_start_key = '<C-m>'
+let s:default_ez_window_keys = {
+            \ 'left'  : '<C-h>',
+            \ 'down'  : '<C-j>',
+            \ 'up'    : '<C-k>',
+            \ 'right' : '<C-l>',
+            \}
+}
+let s:default_ez_terminal_key = '<C-t>'
+
+let g:resize_start_key = get(g:, 'resize_start_key', s:default_start_key)
+let g:ez_window_keys = {
+            \ 'left'  : get(g:, 'ez_window_keys["left"]', s:default_ez_window_keys['left']),
+            \ 'down'  : get(g:, 'ez_window_keys["down"]', s:default_ez_window_keys['down']),
+            \ 'up'    : get(g:, 'ez_window_keys["up"]', s:default_ez_window_keys['up']),
+            \ 'right' : get(g:, 'ez_window_keys["right"]', s:default_ez_window_keys['right']),
+            \}
+}
+let g:ez_terminal_key = get(g:, 'ez_terminal_key', s:default_ez_terminal_key)
+
+exe 'nnoremap <silent> '. g:resize_start_key .' :EzWindowStartResize<CR>'
+exe 'nnoremap <silent> '. g:ez_window_keys['left'] .' :EzWindowGoLeft<CR>'
+exe 'nnoremap <silent> '. g:ez_window_keys['down'] .' :EzWindowGoDown<CR>'
+exe 'nnoremap <silent> '. g:ez_window_keys['up'] .' :EzWindowGoUp<CR>'
+exe 'nnoremap <silent> '. g:ez_window_keys['right'] .' :EzWindowGoRight<CR>'
+exe 'nnoremap <silent> '. g:ez_terminal_key .' :EzWindowNewTerminal<CR>'
+
+
+let &cpo = s:save_cpo
