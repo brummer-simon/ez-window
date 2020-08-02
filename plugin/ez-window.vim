@@ -151,7 +151,6 @@ let s:default_ez_window_keys = {
             \ 'up'    : '<C-k>',
             \ 'right' : '<C-l>',
             \}
-}
 let s:default_ez_terminal_key = '<C-t>'
 
 let g:resize_start_key = get(g:, 'resize_start_key', s:default_start_key)
@@ -161,7 +160,6 @@ let g:ez_window_keys = {
             \ 'up'    : get(g:, 'ez_window_keys["up"]', s:default_ez_window_keys['up']),
             \ 'right' : get(g:, 'ez_window_keys["right"]', s:default_ez_window_keys['right']),
             \}
-}
 let g:ez_terminal_key = get(g:, 'ez_terminal_key', s:default_ez_terminal_key)
 
 exe 'nnoremap <silent> '. g:resize_start_key .' :EzWindowStartResize<CR>'
