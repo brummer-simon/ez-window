@@ -32,13 +32,13 @@ endfunction
 function! s:NewTerminal()
     if has('nvim')
         if exists('t:terminal_buffer')
-            exe t:terminal_buffer . "wincmd c"
+            exe "bd! " . t:terminal_buffer
             unlet t:terminal_buffer
         else
             botright split
-            let t:terminal_buffer = winnr()
             resize 10
             terminal
+            let t:terminal_buffer = bufnr()
             normal i
         endif
     else
