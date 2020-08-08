@@ -36,8 +36,16 @@ endfunction
 function! s:NewTerminal()
   if has('nvim')
     if exists('t:terminal_buffer')
-      exe "bd! " . t:terminal_buffer
-      unlet t:terminal_buffer
+      if (bufwinid(t:terminal_buffer) > 0)
+        exe "bd! " . t:terminal_buffer
+        unlet t:terminal_buffer
+      else
+        botright split
+        resize 10
+        terminal
+        let t:terminal_buffer = bufnr()
+        normal i   
+      endif
     else
       botright split
       resize 10
