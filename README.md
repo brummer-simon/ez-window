@@ -2,14 +2,34 @@ Easy Window
 ==========
 Simple and small plugin for easy resizing and fast navigation between windows.
 
+#### Window Navigation
+
 ![Imgur](https://i.imgur.com/SOBhnQm.gif?1)
 
-Will create a new window, if it didn't exist earlier or move to an existing one.
+#### Resize Mode
 
 ![Imgur](https://i.imgur.com/fTQkxD4.gif?1)
 
-Enters into Resize Mode.
-Use your keys `<hjkl>` to adjust the split size, `<q>` to quit.
+#### Open Terminal
+
+![Imgur](https://i.imgur.com/ib8AuSN.gif?1)
+
+How to use
+------------
+
+1. Window Navigation:
+
+  - Use `<C-hjkl>` to navigate between splits.
+  - Will create a new window, if it didn't exist earlier or move to an existing one.
+
+2. Resize Mode:
+  - `<C-m>` launches resize mode.
+  - Use default `<hjkl>` keys to adjust the split size.
+  - `<q>` to finish.
+
+3. Open Terminal *(only for NeoVim users)*:
+  - `<C-t>` to *open / close* terminal.
+  - Use default `<C-\><C-n>` mapping to return to normal mode inside terminal split.
 
 Installation
 ------------
@@ -23,7 +43,7 @@ Installation
 * [Vim-Plug](https://github.com/junegunn/vim-plug)
   * `Plug 'AnotherProksY/ez-window'`
 
-Shortcuts
+Default Mappings
 ---------
 
     <C-h>  : New window or Move Left.
@@ -31,3 +51,15 @@ Shortcuts
     <C-k>  : New window or Move Up.
     <C-l>  : New window or Move Right.
     <C-m>  : Enters into Resize Mode.
+    <C-t>  : Open terminal split.
+
+Customize Mappings
+---------
+
+```vim
+" Change default 'Window Resize' mode mapping:
+let g:resize_start_key = '<C-r>'  " or any key you want
+
+" Change 'Open Terminal' mapping:
+let g:ez_terminal_key = '<C-o>'   " or any key you want
+```
