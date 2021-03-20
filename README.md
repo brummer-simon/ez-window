@@ -1,4 +1,5 @@
 Easy Window
+[![License: MIT](https://img.shields.io/badge/License-MIT-green.svg)](https://github.com/AnotherProksY/ez-window/blob/master/LICENSE)
 ==========
 Simple and small plugin for easy resizing and fast navigation between windows.
 
