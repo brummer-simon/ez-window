@@ -54,7 +54,18 @@ function! s:NewTerminal()
       normal i
     endif
   else
-    echo "Sorry, you are not a 'NeoVim' user ;("
+    if exists('t:terminal_buffer')
+      if (bufwinid(t:terminal_buffer) > 0)
+        exe "bd! " . t:terminal_buffer
+        unlet t:terminal_buffer
+      else
+        botright terminal ++rows=10
+        let t:terminal_buffer = bufnr()
+      endif
+    else
+      botright terminal ++rows=10
+      let t:terminal_buffer = bufnr()
+    endif
   endif
 endfunction
 

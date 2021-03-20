@@ -27,7 +27,7 @@ How to use
   - Use default `<hjkl>` keys to adjust the split size.
   - `<q>` to finish.
 
-3. Open Terminal *(only for NeoVim users)*:
+3. Open Terminal:
   - `<C-t>` to *open / close* terminal.
   - Use default `<C-\><C-n>` mapping to return to normal mode inside terminal split.
 
