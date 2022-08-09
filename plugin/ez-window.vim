@@ -1,13 +1,15 @@
-" Simple and small plugin for fast navigation between windows.
-" Maintainer:	AnotherProksY <k.fazilov@icloud.com>
-" Repository: https://github.com/AnotherProksY/ez-window
-
+" Note: This is a fork of the amazing https://github.com/AnotherProksY/ez-window.
+"       All credits go in this direction. I forked this repo for my own needs.
+"       Here is a list of my changes:
+"       - Use ESC to leave resize-mode instead of q
+"
+" Maintainer: Simon Brummer <simon.brummer@posteo.de>
+" Repository: https://github.com/brummer-simon/ez-window
 
 if exists('g:loaded_ez_window') || &cp
   finish
 end
 let g:loaded_ez_window = 1
-
 
 let s:save_cpo = &cpo
 set cpo&vim
@@ -89,7 +91,7 @@ let s:code_list = {
      \  'down'   :'106',
      \  'up'     :'107',
      \  'right'  :'108',
-     \  'finish' :'113',
+     \  'quit'   :'27',
      \}
 
 
@@ -138,28 +140,27 @@ endfun
 
 " Resize Splits
 function! s:ResizeMode(commands)
-  echo "Start Resizing. Press 'q' to quit"
+  echo "Start Resizing. Press 'ESC' to quit"
 
   let l:commands = a:commands
 
   while 1
     let l:c = getchar()
 
-    if c == s:code_list['left'] "h
+    if c == s:code_list['left']     "h
       exec l:commands['left']
     elseif c == s:code_list['down'] "j
       exec l:commands['down']
-    elseif c == s:code_list['up'] "k
+    elseif c == s:code_list['up']    "k
       exec l:commands['up']
     elseif c == s:code_list['right'] "l
       exec l:commands['right']
-    elseif c == s:code_list['finish'] "q
-      redraw
-      echo "Finished!"
+    elseif c == s:code_list['quit']  "ESC
       break
     endif
     redraw
   endwhile
+  redraw
 endfunction
 
 

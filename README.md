@@ -1,7 +1,13 @@
 Easy Window
-[![License: MIT](https://img.shields.io/badge/License-MIT-green.svg)](https://github.com/AnotherProksY/ez-window/blob/master/LICENSE)
+[![License: MIT](https://img.shields.io/badge/License-MIT-green.svg)](https://github.com/brummer-simon/ez-window/blob/master/LICENSE)
 ==========
-Simple and small plugin for easy resizing and fast navigation between windows.
+
+Note: This is a fork of the amazing [ez-window](https://github.com/AnotherProksY/ez-window).
+All credits go in this direction. I forked this repo for my own customization needs.
+If you still not afraid to use it, here is a list of my changes:
+
+* Use ESC to leave resize-mode instead of q
+
 
 #### Window Navigation
 
@@ -26,7 +32,7 @@ How to use
 2. Resize Mode:
   - `<C-m>` launches resize mode.
   - Use default `<hjkl>` keys to adjust the split size.
-  - `<q>` to finish.
+  - `<ESC>` to finish.
 
 3. Open Terminal:
   - `<C-t>` to *open / close* terminal.
