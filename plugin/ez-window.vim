@@ -140,7 +140,7 @@ endfun
 
 " Resize Splits
 function! s:ResizeMode(commands)
-  echo "Start Resizing. Press 'ESC' to quit"
+  echo "Start resizing mode. Press 'ESC' to quit"
 
   let l:commands = a:commands
 
@@ -161,6 +161,7 @@ function! s:ResizeMode(commands)
     redraw
   endwhile
   redraw
+  echo "Left resizing mode"
 endfunction
 
 
