@@ -2,6 +2,7 @@
 "       All credits go in this direction. I forked this repo for my own needs.
 "       Here is a list of my changes:
 "       - Use ESC to leave resize-mode instead of q
+"       - Remove window navigation (I like to keep the original behavior)
 "
 " Maintainer: Simon Brummer <simon.brummer@posteo.de>
 " Repository: https://github.com/brummer-simon/ez-window
@@ -165,22 +166,12 @@ endfunction
 
 
 " List of Commands
-com! EzWindowGoLeft call s:EzWindow('h')
-com! EzWindowGoDown call s:EzWindow('j')
-com! EzWindowGoUp call s:EzWindow('k')
-com! EzWindowGoRight call s:EzWindow('l')
 com! EzWindowStartResize call s:ResizeMode(s:ResizeCommands())
 com! EzWindowNewTerminal call s:NewTerminal()
 
 
 " List of Mappings
 let s:default_start_key = '<C-m>'
-let s:default_ez_window_keys = {
-            \ 'left'  : '<C-h>',
-            \ 'down'  : '<C-j>',
-            \ 'up'    : '<C-k>',
-            \ 'right' : '<C-l>',
-            \}
 let s:default_ez_terminal_key = '<C-t>'
 
 
@@ -190,10 +181,6 @@ let g:ez_window_splits = get(g:, 'ez_window_splits', 1)
 
 
 exe 'nnoremap <silent> '. g:resize_start_key .' :EzWindowStartResize<CR>'
-exe 'nnoremap <silent> '. s:default_ez_window_keys['left'] .' :EzWindowGoLeft<CR>'
-exe 'nnoremap <silent> '. s:default_ez_window_keys['down'] .' :EzWindowGoDown<CR>'
-exe 'nnoremap <silent> '. s:default_ez_window_keys['up'] .' :EzWindowGoUp<CR>'
-exe 'nnoremap <silent> '. s:default_ez_window_keys['right'] .' :EzWindowGoRight<CR>'
 exe 'nnoremap <silent> '. g:ez_terminal_key .' :EzWindowNewTerminal<CR>'
 
 if (g:ez_window_splits == 0)

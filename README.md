@@ -3,15 +3,12 @@ Easy Window
 ==========
 
 Note: This is a fork of the amazing [ez-window](https://github.com/AnotherProksY/ez-window).
-All credits go in this direction. I forked this repo for my own customization needs.
-If you still not afraid to use it, here is a list of my changes:
+All credits go in this direction. I forked this repo for my own customization purposes.
+If you are still not afraid to use it, here is a list of my changes:
 
 * Use ESC to leave resize-mode instead of q
+* Remove window navigation (I like to keep the original behavior)
 
-
-#### Window Navigation
-
-![Imgur](https://i.imgur.com/SOBhnQm.gif?1)
 
 #### Resize Mode
 
@@ -24,17 +21,12 @@ If you still not afraid to use it, here is a list of my changes:
 How to use
 ------------
 
-1. Window Navigation:
-
-  - Use `<C-hjkl>` to navigate between splits.
-  - Will create a new window, if it didn't exist earlier or move to an existing one.
-
-2. Resize Mode:
+1. Resize Mode:
   - `<C-m>` launches resize mode.
   - Use default `<hjkl>` keys to adjust the split size.
   - `<ESC>` to finish.
 
-3. Open Terminal:
+2. Open Terminal:
   - `<C-t>` to *open / close* terminal.
   - Use default `<C-\><C-n>` mapping to return to normal mode inside terminal split.
 
@@ -44,19 +36,15 @@ Installation
 * Manual
   * Copy `plugin/ez-window.vim` to `~/.vim/plugin`
 * [Pathogen](https://github.com/tpope/vim-pathogen)
-  * `git clone git://github.com/AnotherProksY/ez-window.git ~/.vim/bundle/vim-ez-window`
+  * `git clone git://github.com/brummer-simon/ez-window.git ~/.vim/bundle/vim-ez-window`
 * [Vundle](https://github.com/VundleVim/Vundle.vim)
-  * `Plugin 'AnotherProksY/ez-window'`
+  * `Plugin 'brummer-simon/ez-window'`
 * [Vim-Plug](https://github.com/junegunn/vim-plug)
-  * `Plug 'AnotherProksY/ez-window'`
+  * `Plug 'brummer-simon/ez-window'`
 
 Default Mappings
 ---------
 
-    <C-h>  : New window or Move Left.
-    <C-j>  : New window or Move Down.
-    <C-k>  : New window or Move Up.
-    <C-l>  : New window or Move Right.
     <C-m>  : Enters into Resize Mode.
     <C-t>  : Open terminal split.
 
