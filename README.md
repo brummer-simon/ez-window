@@ -7,11 +7,8 @@ All credits go in this direction. I forked this repo for my own customization ne
 If you still not afraid to use it, here is a list of my changes:
 
 * Use ESC to leave resize-mode instead of q
+* Remove window navigation
 
-
-#### Window Navigation
-
-![Imgur](https://i.imgur.com/SOBhnQm.gif?1)
 
 #### Resize Mode
 
@@ -53,10 +50,6 @@ Installation
 Default Mappings
 ---------
 
-    <C-h>  : New window or Move Left.
-    <C-j>  : New window or Move Down.
-    <C-k>  : New window or Move Up.
-    <C-l>  : New window or Move Right.
     <C-m>  : Enters into Resize Mode.
     <C-t>  : Open terminal split.
 
