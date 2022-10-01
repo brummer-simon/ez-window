@@ -41,11 +41,11 @@ Installation
 * Manual
   * Copy `plugin/ez-window.vim` to `~/.vim/plugin`
 * [Pathogen](https://github.com/tpope/vim-pathogen)
-  * `git clone git://github.com/AnotherProksY/ez-window.git ~/.vim/bundle/vim-ez-window`
+  * `git clone git://github.com/brummer-simon/ez-window.git ~/.vim/bundle/vim-ez-window`
 * [Vundle](https://github.com/VundleVim/Vundle.vim)
-  * `Plugin 'AnotherProksY/ez-window'`
+  * `Plugin 'brummer-simon/ez-window'`
 * [Vim-Plug](https://github.com/junegunn/vim-plug)
-  * `Plug 'AnotherProksY/ez-window'`
+  * `Plug 'brummer-simon/ez-window'`
 
 Default Mappings
 ---------
